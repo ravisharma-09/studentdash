@@ -1,54 +1,63 @@
-/* Phase 1 & 4 Preparation: CSS Variables */
+/* main styles */
+
 :root {
-    /* Colors */
-    --bg-color: #f4f4f9;
-    --sidebar-bg: #2c3e50;
-    --text-color: #333;
-    --text-light: #7f8c8d;
-    --card-bg: #ffffff;
-    --accent-color: #27ae60;
-    /* Green */
-    --accent-hover: #2ecc71;
-    --border-color: #ddd;
+    /* colors */
+    --bg-body: #f3f2ef;
+    --bg-card: #ffffff;
+    --text-main: #191919;
+    --text-sub: #666666;
+    --accent: #0a66c2;
+    --accent-hover: #004182;
+    --border: #e0e0e0;
+
+    /* layout vars */
+    --card-radius: 8px;
+    --card-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+    --font-stack: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Basic Reset */
+/* reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Layout container */
+/* layout */
 .container {
     display: flex;
-    height: 100vh;
-    /* Full screen height */
-    overflow: hidden;
-    /* Prevent body scroll, handle in main-content */
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Sidebar Styling */
+/* sidebar stuff */
 .sidebar {
-    width: 250px;
-    background-color: var(--sidebar-bg);
-    color: white;
-    padding: 20px;
+    width: 280px;
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border);
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    /* Keeps sidebar fixed height */
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 
 .sidebar .logo h2 {
-    margin-bottom: 30px;
-    text-align: center;
+    color: var(--accent);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
 }
 
 .sidebar ul {
@@ -56,285 +65,317 @@ body {
 }
 
 .sidebar ul li {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 .sidebar ul li a {
-    color: #bdc3c7;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: var(--text-sub);
     text-decoration: none;
-    font-size: 18px;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: var(--card-radius);
+    transition: all 0.2s ease;
 }
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
+    background-color: rgba(10, 102, 194, 0.1);
+    color: var(--accent);
 }
 
-/* Main Content Styling */
+/* main area */
 .main-content {
     flex: 1;
-    /* Takes up remaining space */
-    padding: 20px 40px;
-    overflow-y: auto;
-    /* Scrollable main area */
+    padding: 24px;
 }
 
 header {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+    background: var(--bg-card);
+    padding: 16px 24px;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
 }
 
 .greeting h1 {
-    font-size: 28px;
-    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-main);
 }
 
 .greeting p {
-    color: var(--text-light);
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-top: 4px;
 }
 
-/* Quote Section */
+/* quotes */
 .quote-section {
-    background-color: #dff9fb;
-    /* Light blue tint */
-    padding: 15px;
-    border-left: 5px solid #2980b9;
-    /* Blue accent */
-    margin-bottom: 30px;
-    border-radius: 4px;
+    background-color: var(--bg-card);
+    padding: 16px 24px;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+    border-left: none;
 }
 
 .quote-section h3 {
-    font-size: 14px;
-    color: #2980b9;
-    margin-bottom: 5px;
+    font-size: 12px;
+    color: var(--text-sub);
+    font-weight: 600;
+    margin-bottom: 8px;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .quote-section blockquote {
-    font-style: italic;
-    font-size: 18px;
-    color: #2c3e50;
+    font-size: 16px;
+    color: var(--text-main);
+    font-style: normal;
 }
 
-/* Stats Cards */
+/* stats grid */
 .stats {
-    display: flex;
-    /* Flexbox for row layout */
-    gap: 20px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    /* Wrap on small screens */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
 }
 
 .card {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    /* Grow to fill space */
-    min-width: 200px;
-    /* Minimum width before wrapping */
-    text-align: center;
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    text-align: left;
+    border: 1px solid transparent;
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
-    margin-bottom: 10px;
-    color: var(--text-light);
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 8px;
 }
 
 .card .big-text {
-    font-size: 32px;
-    font-weight: bold;
-    color: var(--text-color);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--accent);
 }
 
-/* Progress Bar Styles */
+/* progress bar */
+.progress-container-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
 .progress-bar-container {
-    background-color: #ecf0f1;
-    border-radius: 10px;
-    height: 15px;
-    width: 100%;
-    margin-top: 5px;
+    background-color: #e9e9e9;
+    border-radius: 4px;
+    height: 6px;
+    flex: 1;
     overflow: hidden;
 }
 
 .progress-fill {
-    background-color: var(--accent-color);
+    background-color: var(--accent);
     height: 100%;
-    border-radius: 10px;
-    color: white;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    min-width: 40px;
+    text-align: right;
 }
 
 .small-text {
     font-size: 12px;
-    color: var(--text-light);
-    margin-top: 5px;
+    color: var(--text-sub);
+    margin-top: 8px;
+    display: block;
 }
 
-/* To-Do Section */
+/* todo list */
 .todo-section {
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
 }
 
 .todo-section h2 {
-    margin-bottom: 20px;
-    color: var(--text-color);
+    font-size: 18px;
+    color: var(--text-main);
+    margin-bottom: 16px;
 }
 
 .todo-input {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 .todo-input input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    transition: background 0.2s, border 0.2s;
+}
+
+.todo-input input:focus {
+    outline: none;
+    background-color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
 }
 
 .todo-input button {
-    padding: 10px 20px;
-    background-color: var(--accent-color);
+    padding: 8px 24px;
+    background-color: var(--accent);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background 0.2s;
 }
 
 .todo-input button:hover {
     background-color: var(--accent-hover);
 }
 
-#taskList {
-    list-style: none;
-}
-
 #taskList li {
-    padding: 12px;
-    border-bottom: 1px solid var(--border-color);
-    cursor: pointer;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 15px;
+    color: var(--text-main);
 }
 
-#taskList li:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+#taskList li:last-child {
+    border-bottom: none;
 }
 
 .completed {
+    color: var(--text-sub) !important;
     text-decoration: line-through;
-    color: var(--text-light);
-    opacity: 0.7;
 }
 
-/* Phase 5: Responsive Design (Mobile) */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        /* Stack vertically on phone */
-        height: auto;
-    }
-
-    .sidebar {
-        width: 100%;
-        padding: 10px;
-        flex-direction: row;
-        /* Horizontal nav on mobile */
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .sidebar .logo h2 {
-        margin-bottom: 0;
-        font-size: 20px;
-    }
-
-    .sidebar ul {
-        display: none;
-        /* Hide full menu for now on mobile, or simple toggle */
-    }
-
-    .stats {
-        flex-direction: column;
-        /* Stack cards */
-    }
-
-    .main-content {
-        padding: 20px;
-        /* Less padding on mobile */
-    }
-}
-
-/* Schedule Table Styles - Simple & Clean */
+/* schedule */
 .schedule-section {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-    /* Scroll on small screens */
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    margin-top: 24px;
 }
 
 .schedule-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.schedule-table th,
-.schedule-table td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .schedule-table th {
-    background-color: var(--accent-color);
-    color: white;
-    font-weight: 500;
+    text-align: left;
+    font-size: 13px;
+    color: var(--text-sub);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    background: none;
+}
+
+.schedule-table td {
+    padding: 16px 12px;
+    font-size: 14px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border);
+}
+
+.schedule-table tr:last-child td {
+    border-bottom: none;
 }
 
 .schedule-table tr:hover {
     background-color: #f9f9f9;
 }
 
-/* Assignments Styles */
+/* assignments */
 .assignment-card {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    border-left: 5px solid var(--accent-color);
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-left: none;
 }
 
 .assignment-card h3 {
-    margin-bottom: 10px;
-    color: var(--text-color);
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.assignment-card h3:hover {
+    text-decoration: underline;
 }
 
 .assignment-card p {
-    color: var(--text-light);
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+/* mobile */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar ul {
+        display: none;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
 }
