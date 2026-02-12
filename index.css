@@ -314,6 +314,11 @@ header {
     border-bottom: 1px solid var(--border);
 }
 
+.schedule-table td[contenteditable="true"]:hover {
+    background-color: #f0f0f0;
+    cursor: text;
+}
+
 .schedule-table tr:last-child td {
     border-bottom: none;
 }
