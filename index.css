@@ -354,6 +354,92 @@ header {
     color: var(--text-main);
 }
 
+.done-btn {
+    margin-top: 12px;
+    padding: 6px 16px;
+    background-color: transparent;
+    color: var(--text-sub);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.done-btn:hover {
+    background-color: #f3f2ef;
+    color: var(--text-main);
+    border-color: var(--text-main);
+}
+
+.new-assignment {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.new-assignment input,
+.new-assignment textarea {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    width: 100%;
+}
+
+.new-assignment button {
+    align-self: flex-start;
+    padding: 8px 24px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* exams form */
+.exam-table {
+    margin-bottom: 12px;
+}
+
+.add-exam-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.add-exam-form input {
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+    width: 100%;
+    font-family: inherit;
+}
+
+.add-exam-form button {
+    background-color: var(--text-main);
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+.add-exam-form button:hover {
+    background-color: black;
+}
+
 /* mobile */
 @media (max-width: 768px) {
     .container {
@@ -364,16 +450,35 @@ header {
         width: 100%;
         height: auto;
         position: static;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
         padding: 16px;
         border-right: none;
         border-bottom: 1px solid var(--border);
+        gap: 16px;
+    }
+
+    .sidebar .logo h2 {
+        margin-bottom: 0;
     }
 
     .sidebar ul {
-        display: none;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 4px;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .sidebar ul li a {
+        padding: 8px 12px;
+        font-size: 14px;
+        background: #f0f0f0;
+        white-space: nowrap;
     }
 
     .main-content {
@@ -382,5 +487,11 @@ header {
 
     .stats {
         grid-template-columns: 1fr;
+    }
+
+    .schedule-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 }

@@ -189,9 +189,108 @@ loadTable();
 setupTableEdits();
 updateNextClass();
 
-const taskInp = document.getElementById("taskInput");
 if (taskInp) {
     taskInp.addEventListener("keypress", function (e) {
         if (e.key === "Enter") addTask();
     });
+}
+
+function addAssignment() {
+    const titleInp = document.getElementById("asgTitle");
+    const detailInp = document.getElementById("asgDetail");
+
+    const title = titleInp.value.trim();
+    const detail = detailInp.value.trim();
+
+    if (title === "") {
+        alert("Please enter a title!");
+        return;
+    }
+
+    const container = document.getElementById("assignmentList");
+
+    const div = document.createElement("div");
+    div.className = "assignment-card";
+
+    div.innerHTML = `
+        <h3>${title}</h3>
+        <p>${detail}</p>
+        <button class="done-btn" onclick="this.parentElement.remove()">Mark as Done</button>
+    `;
+
+    container.appendChild(div);
+
+    titleInp.value = "";
+    detailInp.value = "";
+}
+
+function addSubject() {
+    const input = document.getElementById("newSubjectInput");
+    const name = input.value.trim();
+
+    if (name === "") {
+        alert("Enter a subject name!");
+        return;
+    }
+
+    const grid = document.getElementById("gradesGrid");
+
+    const div = document.createElement("div");
+    div.className = "card subject-card";
+
+    div.innerHTML = `
+        <h3>${name}</h3>
+        <table class="exam-table" style="width: 100%; text-align: left; margin-top: 10px; border-collapse: collapse;">
+            <thead>
+                <tr style="border-bottom: 2px solid #eee;">
+                    <th style="padding: 8px;">Exam</th>
+                    <th style="padding: 8px;">Score</th>
+                </tr>
+            </thead>
+            <tbody class="exam-list-body"></tbody>
+        </table>
+        <div class="add-exam-form">
+            <input type="text" placeholder="Exam Name" class="exam-name">
+            <div style="display: flex; gap: 8px;">
+                <input type="number" placeholder="Marks" class="exam-marks">
+                <input type="number" placeholder="Out of" class="exam-total">
+            </div>
+            <button onclick="addExam(this)">Add Exam</button>
+        </div>
+    `;
+
+    grid.appendChild(div);
+    input.value = "";
+}
+
+function addExam(btn) {
+    const form = btn.parentElement;
+    const nameInp = form.querySelector(".exam-name");
+    const marksInp = form.querySelector(".exam-marks");
+    const totalInp = form.querySelector(".exam-total");
+
+    const name = nameInp.value.trim();
+    const marks = marksInp.value;
+    const total = totalInp.value;
+
+    if (name === "" || marks === "" || total === "") {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    const card = form.parentElement;
+    const tbody = card.querySelector(".exam-list-body");
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td style="padding: 8px; border-bottom: 1px solid #f9f9f9;">${name}</td>
+        <td style="padding: 8px; border-bottom: 1px solid #f9f9f9;">${marks}/${total}</td>
+    `;
+
+    tbody.appendChild(tr);
+
+    // clear inputs
+    nameInp.value = "";
+    marksInp.value = "";
+    totalInp.value = "";
 }
