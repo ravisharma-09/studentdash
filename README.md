@@ -1,4 +1,4 @@
-# **StudentDash – Student Dashboard**
+# **StudentDash - Student Dashboard**
 
 **Live Site:**
 https://studentdash-two.vercel.app/
@@ -12,7 +12,7 @@ https://github.com/ravisharma-09/studentdash
 
 StudentDash is a simple, clean, and interactive student dashboard built to practice real-world frontend development. The project focuses on layout design, responsiveness, and basic interactivity using core web technologies.
 
-This is a **frontend-only** project — all the data shown is static and used only for demonstration.
+This is a **frontend-only** project - all the data shown is static and used only for demonstration.
 
 ---
 
@@ -34,7 +34,7 @@ This is a **frontend-only** project — all the data shown is static and used on
 * CSS
 * JavaScript
 
-Everything is built using plain web technologies — no frameworks.
+Everything is built using plain web technologies - no frameworks.
 
 ---
 
@@ -62,19 +62,19 @@ No installation required.
 
 ```
 studentdash/
-│── index.html
-│── assignments.html
-│── grades.html
-│── schedule.html
-│── index.css
-│── main.js
+│-- index.html
+│-- assignments.html
+│-- grades.html
+│-- schedule.html
+│-- index.css
+│-- main.js
 ```
 
 ---
 
 ## **How I Used AI in This Project (For Reviewers)**
 
-I used AI for **about 10–15%** of the work.
+I used AI for **about 10-15%** of the work.
 
 **Where AI helped:**
 
